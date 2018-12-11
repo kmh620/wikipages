@@ -1,0 +1,17 @@
+<h1>Business: <%= @business.name %></h1>
+<h3>Address: <%= @business.address %> </h3>
+<h3>Phone: <%= @business.phone %> </h3>
+<h3>Website: <%= @business.website %> </h3>
+<h3>Hours: <%= @business.hours %> </h3>
+<h3>Type: <%= Type.find(@business.type_id).name %> </h3>
+
+<p><%= link_to "Edit Business",  edit_type_business_path(Type.find(@business.type_id), @business) %></p>
+
+<p><%= link_to "Delete Business", type_business_path(Type.find(@business.type_id), @business),
+                         :data => {:confirm => "You sure?",
+                                   :method => "delete"} %></p>
+
+
+
+
+<p><%= link_to "Return home", types_path %></p>

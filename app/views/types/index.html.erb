@@ -1,0 +1,25 @@
+<h1>All your types</h1>
+
+<% if @types.any? %>
+
+<ul>
+
+  <% @types.each do |type| %>
+  <li><%= type.name %> | <%= link_to "Add Business", new_type_business_path(type) %> | <%= link_to "Edit Type", edit_type_path(type) %> | <%= link_to "Delete Type", type_path(type),
+                           :data => {:confirm => "You sure?",
+                                     :method => "delete"} %>
+                                   </li>
+    <ul>
+      <% type.businesses.each do |business| %>
+      <li><%= link_to business.name,  type_business_path(type, business) %></li>
+      <% end %>
+    </ul>
+<% end %>
+  </ul>
+
+<% else %>
+<p>There are no types. Add one below!</p>
+<% end %>
+
+
+<%= link_to "New Type", new_type_path %>

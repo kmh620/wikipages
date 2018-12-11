@@ -1,0 +1,27 @@
+<h1><%= @type.name %></h1>
+
+
+
+<p><%= link_to "Add Business", new_type_business_path(@type)%></p>
+
+<p><%= link_to "Edit Type", edit_type_path(@type) %></p>
+
+<p><%= link_to "Delete Type", type_path(@type),
+                         :data => {:confirm => "You sure?",
+                                   :method => "delete"} %></p>
+
+<p><%= link_to "Return to types", types_path %></p>
+
+
+<% if @type.businesses.any? %>
+
+<ul>
+
+  <% @type.businesses.each do |business| %>
+  <li><%= link_to business.name, type_businesses %></li>
+<% end %>
+  </ul>
+
+<% else %>
+<p>There are no businesses. Add one below!</p>
+<% end %>

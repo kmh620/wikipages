@@ -1,0 +1,22 @@
+
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: wikipages_development
+
+
+test:
+  <<: *default
+  database: wikipages_test
+
+production:
+  <<: *default
+  database: wikipages_production
+  username: wikipages
+  password: <%= ENV['WIKIPAGES_DATABASE_PASSWORD'] %>
